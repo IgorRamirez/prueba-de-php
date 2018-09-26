@@ -61,7 +61,15 @@ and open the template in the editor.
     
     
       $('#boton1').click(function(){
-          $('#principal').load("login.php");
+          //lee el contenido de las las cajas nombre y contraseña
+          var _cajaNombre = $('#cajaNombre').val();
+          var _cajaPassword = $('#cajaPassword').val();
+          
+          $('#principal').load("login.php",{
+              cajaNombre : _cajaNombre,
+              cajaPassword : _cajaPassword
+              
+          });
         });
         
         
