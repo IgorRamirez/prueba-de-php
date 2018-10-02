@@ -1,11 +1,26 @@
 <?php
 include './misFunciones.php';
 
+
+function limpiaPalabra($palabra){
+    //FILTRO MUY BASICO PARA EVITAR LA INYECCION SQL
+    $palabra = trim($palabra, "'");
+    $palabra = trim($palabra, " ");
+    $palabra = trim($palabra, "-");
+    $palabra = trim($palabra, "`");
+    $palabra = trim($palabra, '"');
+      return $palabra;
+}
+
 $mysqli= conectaBBDD();
 
-$cajaNombre = $_POST['cajaNombre'];
 
-$cajaPassword = $_POST['cajaPassword'];
+
+$cajaNombre = limpiaPalabra($_POST['cajaNombre']) ;
+
+$cajaPassword = limpiaPalabra($_POST['cajaPassword']);
+
+
 
 
 //echo 'Has escrito el usuario: '.$cajaNombre.' y la contraseña: '.$cajaPassword;
@@ -20,8 +35,10 @@ $numUsuarios = $resultadoQuery -> num_rows;
  //}
 
 if($numUsuarios > 0){
-    //muestro la pantalla de la aplicacion
+    //muestro la pantalla de la aplicacion el require llama a un archivo
+    require 'app.php';
     }
     else{
         //muestro una pantalla de error
+        require 'error.php';
     }
