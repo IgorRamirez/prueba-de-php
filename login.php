@@ -21,7 +21,7 @@ $cajaNombre = limpiaPalabra($_POST['cajaNombre']) ;
 $cajaPassword = limpiaPalabra($_POST['cajaPassword']);
 
 
-
+  
 
 //echo 'Has escrito el usuario: '.$cajaNombre.' y la contraseña: '.$cajaPassword;
   
