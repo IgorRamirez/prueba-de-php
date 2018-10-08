@@ -11,8 +11,9 @@
 </div>
 
 <script>
-    function sigue(_ tema){
-        switch(_ tema){
+    var _vidas = 3;
+    function sigue(_tema){
+        switch(_tema){
             //cargo el archivo de preguntas
             case '1': $("#menu").load("juego.php",{vidas:3,correctas:0, tema:"Historia"});break;
             case '2': $("#menu").load("juego.php",{vidas:3,correctas:0, tema:"Econimia"});break;
