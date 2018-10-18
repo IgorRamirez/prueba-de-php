@@ -1,4 +1,5 @@
 <?php
+session_start();
 //capturo los valores de los parametrosque me han sido pasados desde app.php
 include('misFunciones.php');
 $vidas = $_POST['vidas'] ;
@@ -30,7 +31,8 @@ $preguntaActual = rand(0, $numPreguntas);
 
 <div>
     <p></p>
-    <p><a class="btn btn-block btn-dark disabled">   BIENVENIDOS A LA APLICACION TRIVIAL DE LA EVAU</a></p>    
+    <p><a class="btn btn-block btn-dark disabled">   BIENVENIDOS A LA APLICACION TRIVIAL DE LA EVAU</a></p>
+    <p><a class="btn btn-block btn-dark disabled"><?php echo $_SESSION['nombreUsuario']?></a></p>
     <p><a class="btn btn-block btn-warning" onclick="volver();">volver al menu</a></p>     
     
 <p><a id="sigue1" class="btn btn-block btn-primary"><?php echo $tema;?></a></p>
@@ -64,11 +66,11 @@ $preguntaActual = rand(0, $numPreguntas);
     
 function sigue(){
     numeroPregunta = Math.floor(Math.random() * listaPreguntas.length);
-    $('#enunciado').text(listaPreguntas[0][1]);
-    $('#r1').text(listaPreguntas[0][2]).click(sigue());
-    $('#r2').text(listaPreguntas[0][3]).click(sigue());
-    $('#r3').text(listaPreguntas[0][4]).click(sigue());
-    $('#r4').text(listaPreguntas[0][5]).click(sigue());
+    $('#enunciado').text(listaPreguntas[numeroPregunta][1]);
+    $('#r1').text(listaPreguntas[numeroPregunta][2]).click(function(){sigue();});
+    $('#r2').text(listaPreguntas[numeroPregunta][3]).click(function(){sigue();});
+    $('#r3').text(listaPreguntas[numeroPregunta][4]).click(function(){sigue();});
+    $('#r4').text(listaPreguntas[numeroPregunta][5]).click(function(){sigue();});
      }    
 </script>
 

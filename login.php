@@ -1,4 +1,8 @@
 <?php
+
+//Continua la ssesion dl navegador en el servidor php 
+session_start();
+
 include './misFunciones.php';
 
 
@@ -29,14 +33,16 @@ $resultadoQuery = $mysqli -> query("SELECT * FROM usuarios WHERE nombreUsuario='
 
 $numUsuarios = $resultadoQuery -> num_rows;
 
-//for( $i = 0; $i< $numPreguntas; $i++){
- //   $r =$resultadoQuery -> fetch_array();
- //   echo $r['nombreUsuario'].'<br/>';
- //}
-
 if($numUsuarios > 0){
+    $r = $resultadoQuery ->fetch_array();
+    //en la variable de sesion "nombreUsuario" guardo el nombre del usuario
+    $_SESSION['nombreUsuario'] = $cajaNombre;
+    
+    //en la variable de sesion guardo el id de Usuario leido de la bbdd 
+    $_SESSION['idUsuario'] = $r['idUsuario'];
     //muestro la pantalla de la aplicacion el require llama a un archivo
     require 'app.php';
+        
     }
     else{
         //muestro una pantalla de error
